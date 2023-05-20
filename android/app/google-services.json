@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "928493884801",
+    "project_id": "zabayehaljazera",
+    "storage_bucket": "zabayehaljazera.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928493884801:android:70673ab75430d970138480",
+        "android_client_info": {
+          "package_name": "com.poszabayeh.delivery_man"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928493884801-mi69kee79517ac1ef3365nu6194tu79u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC74zO4xP3_BuV7dsMkysnbJARfGhWYMmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928493884801-mi69kee79517ac1ef3365nu6194tu79u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928493884801:android:6f7e0edd9c09b017138480",
+        "android_client_info": {
+          "package_name": "com.poszabayeh.zabayehaljazeera"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928493884801-mi69kee79517ac1ef3365nu6194tu79u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC74zO4xP3_BuV7dsMkysnbJARfGhWYMmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928493884801-mi69kee79517ac1ef3365nu6194tu79u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,69 @@
+import 'package:flutter/material.dart';
+import 'package:zabayeh_aljazeera/data/model/response/product_model.dart';
+import 'package:zabayeh_aljazeera/provider/product_provider.dart';
+import 'package:zabayeh_aljazeera/utill/color_resources.dart';
+import 'package:zabayeh_aljazeera/utill/dimensions.dart';
+import 'package:zabayeh_aljazeera/utill/styles.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../helper/responsive_helper.dart';
+
+class VariationView extends StatelessWidget {
+  final Product product;
+  VariationView({@required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<ProductProvider>(
+      builder: (context, productProvider, child) {
+        return ListView.builder(
+          shrinkWrap: true,
+          itemCount: product.choiceOptions.length,
+          padding: ResponsiveHelper.isDesktop(context) ? EdgeInsets.symmetric(vertical: Dimensions.PADDING_SIZE_SMALL) : EdgeInsets.all(Dimensions.PADDING_SIZE_SMALL),
+          physics:  NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(product.choiceOptions[index].title, style: poppinsMedium.copyWith(fontSize: Dimensions.FONT_SIZE_LARGE)),
+              SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+              GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: (1 / 0.25),
+                ),
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: product.choiceOptions[index].options.length,
+                itemBuilder: (context, i) {
+                  return InkWell(
+                    onTap: () {
+                      productProvider.setCartVariationIndex(index, i);
+
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(horizontal: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                      decoration: BoxDecoration(
+                        color: productProvider.variationIndex[index] != i ? ColorResources.getBackgroundColor(context) : Theme.of(context).primaryColor,
+                        borderRadius: BorderRadius.circular(12),
+                        border: productProvider.variationIndex[index] != i ? Border.all(color: ColorResources.getGreyColor(context), width: 2) : null,
+                      ),
+                      child: Text(
+                        product.choiceOptions[index].options[i].trim(), maxLines: 2, //overflow: TextOverflow.ellipsis,
+                        style: TextStyle( color: productProvider.variationIndex[index] != i ? Colors.black : Colors.white,
+                        fontSize: 13),
+                      ),
+
+                    ),
+                  );
+                },
+              ),
+              SizedBox(height: index != product.choiceOptions.length-1 ? Dimensions.PADDING_SIZE_LARGE : 0),
+            ]);
+          },
+        );
+      },
+    );
+  }
+}
